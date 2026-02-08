@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+import os
 
 # Flags
 STOCK = "TSLA"
@@ -10,13 +11,16 @@ STOCK_MOVE_THRESHOLD = 0.05
 
 #  API flags
 END_POINT = 'https://www.alphavantage.co/query'
-ALPHAV_API_KEY = 'DBJF0ET84OLVZLT3'
+ALPHAV_API_KEY = os.environ.get('ALPHAV_API_KEY')
 ALPHA_PARAMS = {
     'function':'TIME_SERIES_DAILY',
     'symbol':STOCK,
     'outputsize': 'compact',
     'apikey':ALPHAV_API_KEY
 }
+
+NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
+
 
 ## STEP 1: Use https://www.alphavantage.co
 # When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
