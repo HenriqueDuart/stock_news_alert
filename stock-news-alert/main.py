@@ -72,6 +72,7 @@ def send_email(content):
 response = requests.get(url=ALPHAV_END_POINT, params=ALPHA_PARAMS)
 response.raise_for_status()
 data = response.json()
+# print(data)
 
 # Put the data in a new dict with {key:value} formate where key=date and value=close_price
 time_series_dict = data['Time Series (Daily)']
